@@ -21,4 +21,5 @@ void	fill(t_stack **stack, char *str);
 void	free_stack(t_stack **stack);
 void	orden_l(t_stack **stack);
 void	orden_r(t_stack **stack);
+int	sscore(t_stack *stack, t_stack *stack1);
 #endif

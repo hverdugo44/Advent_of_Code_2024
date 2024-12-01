@@ -6,7 +6,7 @@
 /*   By: hverdugo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 10:40:28 by hverdugo          #+#    #+#             */
-/*   Updated: 2024/12/01 13:12:32 by hverdugo         ###   ########.fr       */
+/*   Updated: 2024/12/01 16:44:28 by hverdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,11 @@ int	main(void)
 	int	x;
 	int	res;
 	char	*str;
+	long	j;
 	t_stack	*list;
 	t_stack *temp;
 
+	j = 0;
 	res = 0;
 	list = NULL;
 	x = open("list.txt", O_RDONLY);
@@ -94,11 +96,19 @@ int	main(void)
 	orden_r(&list);
 	while (temp)
 	{
-		res += resta(&list);
-		printf("%d\n%d\n\nSuma de los resultados = %d\n\n\n", temp->left, temp->rigth, res);
+		res += resta(&temp);
 		temp = temp->next;
 	}
+	printf("Suma de los resultados =		 %d\n",res);
 	close(x);
+	temp = list;
+	while (temp)
+	{
+		x = sscore(temp, list);
+		j += (temp->left * x);
+		temp = temp->next;
+	}
+	printf("La puntuacion de similaridad es =	%ld\n", j);
 	free_stack(&list);
 	return (0);
 }
