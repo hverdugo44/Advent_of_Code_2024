@@ -6,7 +6,7 @@
 /*   By: hverdugo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 11:38:07 by hverdugo          #+#    #+#             */
-/*   Updated: 2024/12/02 11:17:08 by hverdugo         ###   ########.fr       */
+/*   Updated: 2024/12/02 14:04:01 by hverdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,15 @@ void	free_stack(t_stack **stack)
 		*stack = tmp;
 	}
 	*stack = NULL;
+}
+
+void	delete_next(t_stack **stack)
+{
+	t_stack	*temp;
+	t_stack *delete;
+
+	delete = (*stack)->next;
+	temp = delete->next;
+	(*stack)->next = temp;
+	free(delete);
 }
